@@ -21,7 +21,14 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Logo en position absolue dans le coin supérieur gauche */}
+      <img 
+        src="/logo_ImpulseCap.jpg" 
+        alt="ImpulseCap Logo" 
+        className="fixed top-4 left-4 h-16 object-contain z-50 drop-shadow-lg"
+      />
+      
       {renderContent()}
       <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
     </div>
