@@ -126,7 +126,7 @@ const FormulaireProfil = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-12 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
         {/* En-tête */}
         <div className="text-center mb-8">
