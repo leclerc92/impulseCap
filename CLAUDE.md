@@ -69,6 +69,8 @@ This project uses Tailwind CSS v4 with the new Vite plugin. The setup is differe
 
 ### Context generale
 
+cette application est dédiée aux mobiles !!
+
 Tu es un développeur React et le but c’est que tu créer une application vitrine de notre future start up. Voici le projet :
 Objectif : permettre au personnes en situation de handicap de faire du sport pour lutter contre la sédentarité : leur redonner de l’autonomie, sans leur faire courir le risque de blessure
 Comment on le fait:

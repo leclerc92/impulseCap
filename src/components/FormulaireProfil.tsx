@@ -796,12 +796,12 @@ const FormulaireProfil = () => {
           )}
 
           {/* Navigation */}
-          <div className="flex justify-between items-center mt-8 pt-6 border-t">
+          <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 mt-8 pt-6 border-t">
             <button
               type="button"
               onClick={prevPhase}
               disabled={phase === 1}
-              className={`px-6 py-2 rounded-lg font-medium transition ${
+              className={`px-6 py-3 rounded-lg font-medium transition ${
                 phase === 1
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   : 'bg-gray-300 text-gray-700 hover:bg-gray-400'
@@ -814,14 +814,14 @@ const FormulaireProfil = () => {
               <button
                 type="button"
                 onClick={nextPhase}
-                className="px-6 py-2 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition"
+                className="px-6 py-3 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition"
               >
                 Suivant →
               </button>
             ) : (
               <button
                 type="submit"
-                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-orange-500 text-white rounded-lg font-bold hover:from-blue-700 hover:to-orange-600 transition shadow-lg"
+                className="px-6 py-3 sm:px-8 bg-gradient-to-r from-blue-600 to-orange-500 text-white rounded-lg font-bold hover:from-blue-700 hover:to-orange-600 transition shadow-lg text-base sm:text-lg"
               >
                 Créer mon programme 🎯
               </button>
