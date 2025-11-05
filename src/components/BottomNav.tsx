@@ -11,8 +11,8 @@ const BottomNav = ({ activeTab, onTabChange }: BottomNavProps) => {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 shadow-lg z-50">
-      <div className="flex justify-around items-center h-16 max-w-screen-lg mx-auto">
+    <nav className="absolute bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 shadow-lg z-50">
+      <div className="flex justify-around items-center h-16">
         {tabs.map((tab) => (
           <button
             key={tab.id}

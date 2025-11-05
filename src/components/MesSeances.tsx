@@ -256,8 +256,15 @@ const MesSeances = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-blue-900 mb-2">Mes Séances</h1>
-          <p className="text-gray-600">
+            <div className="flex items-center gap-10">
+                <img
+                    src="/logo_ImpulseCap.jpg"
+                    alt="ImpulseCap Logo"
+                    className="top-4 left-4 h-16 object-contain z-50 drop-shadow-lg"
+                />
+            <h1 className="text-4xl font-bold text-blue-900 mb-2">Mes Séances</h1>
+            </div>
+          <p className="text-gray-600 mt-6">
             Programme personnalisé adapté à votre profil
           </p>
         </div>

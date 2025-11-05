@@ -195,8 +195,16 @@ const Social = () => {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-6">
-          <h1 className="text-4xl font-bold text-blue-900 mb-2">Social</h1>
-          <p className="text-gray-600">Partagez et motivez-vous ensemble</p>
+            <div className="flex items-center gap-10">
+                <img
+                    src="/logo_ImpulseCap.jpg"
+                    alt="ImpulseCap Logo"
+                    className="top-4 left-4 h-16 object-contain z-50 drop-shadow-lg"
+                />
+                <h1 className="text-4xl font-bold text-blue-900 m-2">Social</h1>
+            </div>
+
+          <p className="text-gray-600 mt-5">Partagez et motivez-vous ensemble</p>
         </div>
 
         {/* User Profile Card */}

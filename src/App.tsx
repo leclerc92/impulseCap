@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PhoneMockup from './components/PhoneMockup';
 import FormulaireProfil from './components/FormulaireProfil';
 import MesSeances from './components/MesSeances';
 import Social from './components/Social';
@@ -21,17 +22,18 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen relative">
-      {/* Logo en position absolue dans le coin supérieur gauche */}
-      <img 
-        src="/logo_ImpulseCap.jpg" 
-        alt="ImpulseCap Logo" 
-        className="fixed top-4 left-4 h-16 object-contain z-50 drop-shadow-lg"
-      />
-      
-      {renderContent()}
-      <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
-    </div>
+    <PhoneMockup>
+      <div className="h-full flex flex-col relative">
+        {/* Logo fixe en haut à gauche - ne suit pas le scroll */}
+        {/* Contenu scrollable */}
+        <div className="flex-1 overflow-y-auto pb-16">
+          {renderContent()}
+        </div>
+
+        {/* Bottom Nav fixe en bas du mockup */}
+        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+      </div>
+    </PhoneMockup>
   );
 }
 

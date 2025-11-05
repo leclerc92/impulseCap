@@ -130,10 +130,18 @@ const FormulaireProfil = () => {
       <div className="max-w-4xl mx-auto">
         {/* En-tête */}
         <div className="text-center mb-8">
+            <div className="flex items-center gap-10">
+            <img
+                src="/logo_ImpulseCap.jpg"
+                alt="ImpulseCap Logo"
+                className="top-4 left-4 h-16 object-contain z-50 drop-shadow-lg"
+            />
           <h1 className="text-4xl font-bold text-blue-900 mb-2">
             Votre Profil Personnalisé
           </h1>
-          <p className="text-gray-600">
+            </div>
+
+            <p className="text-gray-600 mt-6">
             Créez un programme d'exercices adapté à vos besoins
           </p>
         </div>
