@@ -1,0 +1,431 @@
+/* Styles globaux pour adapter le contenu au mockup iPhone */
+/* Ces styles s'appliquent à tout le contenu dans le mockup */
+
+.phone-screen {
+  /* Réduction des tailles de base */
+  font-size: 14px;
+  /* Assurer que rien ne déborde */
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.phone-screen * {
+  box-sizing: border-box;
+}
+
+.phone-screen h1 {
+  font-size: 1.5rem !important;
+  line-height: 1.2 !important;
+}
+
+.phone-screen h2 {
+  font-size: 1.25rem !important;
+  line-height: 1.3 !important;
+}
+
+.phone-screen h3 {
+  font-size: 1.1rem !important;
+  line-height: 1.3 !important;
+}
+
+.phone-screen h4 {
+  font-size: 1rem !important;
+}
+
+.phone-screen h5 {
+  font-size: 0.9rem !important;
+}
+
+.phone-screen p {
+  font-size: 0.875rem !important;
+}
+
+.phone-screen .text-4xl {
+  font-size: 1.5rem !important;
+}
+
+.phone-screen .text-3xl {
+  font-size: 1.25rem !important;
+}
+
+.phone-screen .text-2xl {
+  font-size: 1.125rem !important;
+}
+
+.phone-screen .text-xl {
+  font-size: 1rem !important;
+}
+
+.phone-screen .text-lg {
+  font-size: 0.9375rem !important;
+}
+
+.phone-screen .text-base {
+  font-size: 0.875rem !important;
+}
+
+.phone-screen .text-sm {
+  font-size: 0.8125rem !important;
+}
+
+.phone-screen .text-xs {
+  font-size: 0.6875rem !important;
+}
+
+/* Réduction des espacements */
+.phone-screen .py-12 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.phone-screen .py-8 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.phone-screen .py-6 {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.phone-screen .px-8 {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.phone-screen .px-6 {
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+.phone-screen .px-4 {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+.phone-screen .p-8 {
+  padding: 1rem !important;
+}
+
+.phone-screen .p-6 {
+  padding: 0.75rem !important;
+}
+
+.phone-screen .p-4 {
+  padding: 0.5rem !important;
+}
+
+.phone-screen .mb-8 {
+  margin-bottom: 1rem !important;
+}
+
+.phone-screen .mb-6 {
+  margin-bottom: 0.75rem !important;
+}
+
+.phone-screen .mt-8 {
+  margin-top: 1rem !important;
+}
+
+.phone-screen .gap-10 {
+  gap: 1rem !important;
+}
+
+.phone-screen .gap-6 {
+  gap: 0.75rem !important;
+}
+
+.phone-screen .gap-4 {
+  gap: 0.5rem !important;
+}
+
+.phone-screen .gap-3 {
+  gap: 0.375rem !important;
+}
+
+/* Ajustement des hauteurs */
+.phone-screen .h-16 {
+  height: 3rem !important;
+}
+
+.phone-screen .h-12 {
+  height: 2.5rem !important;
+}
+
+.phone-screen .h-10 {
+  height: 2rem !important;
+}
+
+.phone-screen .w-12 {
+  width: 2.5rem !important;
+}
+
+.phone-screen .w-10 {
+  width: 2rem !important;
+}
+
+/* Boutons */
+.phone-screen button {
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1rem !important;
+}
+
+/* Inputs */
+.phone-screen input,
+.phone-screen select,
+.phone-screen textarea {
+  font-size: 0.875rem !important;
+  padding: 0.5rem !important;
+}
+
+/* Arrondis */
+.phone-screen .rounded-lg {
+  border-radius: 0.5rem !important;
+}
+
+/* Ombres réduites */
+.phone-screen .shadow-xl {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.phone-screen .shadow-lg {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Logos - taille réduite dans le mockup */
+.phone-screen img[alt*="Logo"] {
+  height: 2.5rem !important;
+  max-height: 2.5rem !important;
+}
+
+/* Conteneur max-width pour s'adapter au mockup */
+.phone-screen .max-w-4xl {
+  max-width: 100% !important;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+/* Headers avec logos - réduire l'espacement */
+.phone-screen .flex.items-center.gap-10 {
+  gap: 0.5rem !important;
+  flex-wrap: wrap;
+}
+
+/* Ajustement des grilles */
+.phone-screen .grid-cols-2 {
+  gap: 0.5rem !important;
+}
+
+.phone-screen .grid-cols-3 {
+  gap: 0.375rem !important;
+}
+
+.phone-screen .grid-cols-4 {
+  gap: 0.25rem !important;
+}
+
+/* Stats cards */
+.phone-screen .grid.grid-cols-3 > div {
+  padding: 0.5rem !important;
+}
+
+/* Séances cards */
+.phone-screen .space-y-4 > * + * {
+  margin-top: 0.75rem !important;
+}
+
+.phone-screen .space-y-6 > * + * {
+  margin-top: 1rem !important;
+}
+
+.phone-screen .space-y-3 > * + * {
+  margin-top: 0.5rem !important;
+}
+
+/* Social - Forcer les grilles à 3 colonnes max dans le mockup */
+.phone-screen .grid.sm\\:grid-cols-6 {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.phone-screen .grid.sm\\:grid-cols-5 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+/* Social - User profile card */
+.phone-screen .w-16.h-16 {
+  width: 3rem !important;
+  height: 3rem !important;
+}
+
+.phone-screen .text-4xl {
+  font-size: 1.5rem !important;
+}
+
+/* Social - Avatars dans les posts */
+.phone-screen .w-10.h-10 {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.phone-screen .w-12.h-12 {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+}
+
+/* Social - Tailles d'emoji réduites */
+.phone-screen .text-6xl {
+  font-size: 2rem !important;
+}
+
+.phone-screen .text-3xl {
+  font-size: 1.25rem !important;
+}
+
+/* Social - Boutons d'actions des posts */
+.phone-screen button {
+  padding: 0.375rem 0.625rem !important;
+}
+
+.phone-screen button .text-lg {
+  font-size: 1rem !important;
+}
+
+/* Social - Commentaires */
+.phone-screen .pl-4 {
+  padding-left: 0.5rem !important;
+}
+
+/* Social - Citation box */
+.phone-screen .text-lg.italic {
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Social - Truncate text pour éviter débordements */
+.phone-screen .truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Social - Profile stats grid */
+.phone-screen .grid.grid-cols-3.gap-4 {
+  gap: 0.5rem !important;
+}
+
+/* Social - Badges (achievements) */
+.phone-screen .grid.sm\\:grid-cols-6 > div {
+  padding: 0.5rem !important;
+}
+
+.phone-screen .grid.sm\\:grid-cols-6 .text-3xl {
+  font-size: 1.5rem !important;
+  margin-bottom: 0.125rem !important;
+}
+
+.phone-screen .grid.sm\\:grid-cols-6 .text-xs {
+  font-size: 0.625rem !important;
+  line-height: 1.2 !important;
+}
+
+/* Social - Friends section */
+.phone-screen .grid.sm\\:grid-cols-5 > div {
+  padding: 0.5rem !important;
+}
+
+.phone-screen .grid.sm\\:grid-cols-5 .w-12 {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.phone-screen .grid.sm\\:grid-cols-5 .text-2xl {
+  font-size: 1rem !important;
+}
+
+.phone-screen .grid.sm\\:grid-cols-5 .text-sm {
+  font-size: 0.75rem !important;
+}
+
+/* Social - Challenges cards */
+.phone-screen .space-y-3 .border-2 {
+  padding: 0.75rem !important;
+}
+
+.phone-screen .space-y-3 .text-3xl {
+  font-size: 1.25rem !important;
+}
+
+.phone-screen .space-y-3 h4 {
+  font-size: 0.875rem !important;
+  margin-bottom: 0.125rem !important;
+}
+
+.phone-screen .space-y-3 .text-sm {
+  font-size: 0.75rem !important;
+  line-height: 1.3 !important;
+}
+
+.phone-screen .space-y-3 .text-xs {
+  font-size: 0.625rem !important;
+}
+
+/* Social - Profile card stats */
+.phone-screen .bg-gradient-to-r .grid.grid-cols-3 .text-2xl {
+  font-size: 1.25rem !important;
+}
+
+.phone-screen .bg-gradient-to-r .grid.grid-cols-3 .text-xs {
+  font-size: 0.625rem !important;
+}
+
+/* Social - User profile name and avatar */
+.phone-screen .bg-gradient-to-r h2.text-2xl {
+  font-size: 1.125rem !important;
+}
+
+.phone-screen .bg-gradient-to-r .text-4xl {
+  font-size: 1.75rem !important;
+}
+
+/* Social - Réduire les marges/paddings des sections */
+.phone-screen .bg-white.rounded-lg.shadow-lg {
+  padding: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.phone-screen .bg-white.rounded-lg.shadow-lg h3 {
+  margin-bottom: 0.5rem !important;
+  font-size: 1rem !important;
+}
+
+/* Social - Posts */
+.phone-screen .space-y-4 .border-2.rounded-lg {
+  padding: 0.75rem !important;
+}
+
+.phone-screen .space-y-4 .text-gray-700 {
+  font-size: 0.8125rem !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Social - Post comments */
+.phone-screen .space-y-2 .bg-gray-50 {
+  padding: 0.5rem !important;
+}
+
+/* Social - Motivation box */
+.phone-screen .bg-gradient-to-r.from-purple-600 {
+  padding: 1rem !important;
+  margin-top: 0.75rem !important;
+}
+
+.phone-screen .bg-gradient-to-r.from-purple-600 .text-4xl {
+  font-size: 2rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.phone-screen .bg-gradient-to-r.from-purple-600 h3 {
+  font-size: 1.125rem !important;
+  margin-bottom: 0.5rem !important;
+}
