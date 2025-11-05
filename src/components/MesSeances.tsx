@@ -310,6 +310,11 @@ const MesSeances = () => {
     );
   };
 
+  // Scroll vers le haut à l'ouverture de la page
+  useEffect(() => {
+    formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []); // Tableau vide = exécution uniquement au montage du composant
+
   // Si un exercice est sélectionné, afficher la vue détaillée
   if (selectedExercice === 2) {
     return (
@@ -320,11 +325,6 @@ const MesSeances = () => {
       />
     );
   }
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-        formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, []);
 
   return (
     <div ref={formTopRef} className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
