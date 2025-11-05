@@ -29,7 +29,7 @@ const exerciceDetailData = {
   duration: '3 min',
   reps: '3 séries de 10',
   series: '3 séries',
-  videoUrl: '', // Laisser vide pour l'instant, tu ajouteras l'URL plus tard
+  videoUrl: 'public/video.mp4', // Laisser vide pour l'instant, tu ajouteras l'URL plus tard
   description: `Asseyez-vous confortablement avec le dos bien droit. Tenez un poids léger dans chaque main (ou sans poids pour commencer). Levez lentement vos bras devant vous jusqu'à hauteur d'épaule, puis redescendez de manière contrôlée. Gardez vos coudes légèrement fléchis tout au long du mouvement.`,
   conseilsPersonnalises: [
     'Commencez sans poids pour maîtriser le mouvement',
