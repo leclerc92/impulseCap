@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import ExerciceDetail from './ExerciceDetail';
 
 interface Exercise {
@@ -31,7 +31,7 @@ const exerciceDetailData = {
   series: '3 séries',
   videoUrl: 'public/video.mp4', // Laisser vide pour l'instant, tu ajouteras l'URL plus tard
   description: `Asseyez-vous confortablement avec le dos bien droit. Tenez un poids léger dans chaque main (ou sans poids pour commencer). Levez lentement vos bras devant vous jusqu'à hauteur d'épaule, puis redescendez de manière contrôlée. Gardez vos coudes légèrement fléchis tout au long du mouvement.`,
-  conseilsPersonnalises: [
+conseilsPersonnalises: [
     'Commencez sans poids pour maîtriser le mouvement',
     'Si vous êtes en fauteuil roulant, assurez-vous que vos freins sont bien serrés',
     'Respirez : expirez en levant les bras, inspirez en descendant',
@@ -320,6 +320,11 @@ const MesSeances = () => {
       />
     );
   }
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+        formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, []);
 
   return (
     <div ref={formTopRef} className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">

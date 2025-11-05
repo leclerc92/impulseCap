@@ -268,11 +268,11 @@ const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Niveau d'activité physique actuel *
                   </label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-4 gap-3">
                     {['Sédentaire', 'Faible', 'Modéré', 'Actif'].map((niveau) => (
                       <label
                         key={niveau}
-                        className={`flex items-center justify-center px-4 py-3 border-2 rounded-lg cursor-pointer transition ${
+                        className={`flex text-sm tems-center justify-center px-4 py-3 border-2 rounded-lg cursor-pointer transition ${
                           formData.niveauActivite === niveau
                             ? 'border-orange-500 bg-orange-50 text-orange-700'
                             : 'border-gray-300 hover:border-orange-300'

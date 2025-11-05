@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a React 19 application built with TypeScript, Vite, and Tailwind CSS v4. The project uses modern React patterns including StrictMode and is configured for fast development with HMR (Hot Module Replacement).
+ImpulseCap is a mobile-first React 19 application designed as a showcase for an adaptive exercise platform for people with disabilities. The goal is to enable individuals with disabilities to exercise safely and fight against sedentary lifestyles through personalized workout programs.
+
+**IMPORTANT**: This application is designed exclusively for mobile devices. All UI and UX should be optimized for mobile viewing. The application uses a phone mockup component (`PhoneMockup`) that simulates an iPhone to display the mobile interface on desktop.
+
+**Key Concept**: The app generates personalized exercise programs based on user profile information (disability type, body parts to target, duration, goals). There is NO backend - all data is managed client-side in React state.
 
 ## Key Technologies
 
@@ -30,55 +34,143 @@ npm run lint
 npm run preview
 ```
 
-## Architecture
+## Application Architecture
 
-### Entry Point
-- `src/main.tsx` - Application entry point, mounts React app to DOM with StrictMode
-- `index.html` - HTML template with root div
+### Navigation & Layout Structure
 
-### Main Component
-- `src/App.tsx` - Root application component
+The app uses a **tab-based navigation** system with three main sections:
 
-### Styling
-- Tailwind CSS v4 is integrated via Vite plugin in `vite.config.ts`
-- Global styles in `src/index.css` and component styles in `src/App.css`
+1. **Profil** (`FormulaireProfil`) - Multi-phase profile creation form
+2. **Mes séances** (`MesSeances`) - Workout sessions list and exercise details
+3. **Social** (`Social`) - Social/community features (placeholder)
 
-### Build Configuration
-- `vite.config.ts` - Configures React plugin and Tailwind CSS plugin
-- TypeScript uses project references for separation between app code and Node/build scripts
-- ESLint uses flat config format (eslint.config.js) with recommended rules for React Hooks and React Refresh
+Navigation is managed through:
+- `App.tsx` - Root component managing `activeTab` state and routing logic
+- `BottomNav.tsx` - Fixed bottom navigation bar (always visible)
+- `PhoneMockup.tsx` - iPhone UI wrapper with notch, status bar, and home indicator
 
-## Important Notes
+### Key Components
 
-### Tailwind CSS v4
-This project uses Tailwind CSS v4 with the new Vite plugin. The setup is different from v3:
+#### `src/App.tsx`
+- Root application component
+- Manages global state: `activeTab` and `showGenerationPopup`
+- Handles navigation between tabs with `renderContent()` switch
+- Controls program generation flow (profile form → popup → sessions)
+
+#### `src/components/PhoneMockup.tsx`
+- Simulates iPhone interface with realistic UI elements
+- Includes notch, status bar, screen content area, home indicator
+- Wraps all application content to provide mobile context on desktop
+
+#### `src/components/BottomNav.tsx`
+- Fixed bottom navigation with 3 tabs: Profil, Mes séances, Social
+- Shows active tab with gradient indicator
+- Uses emoji icons for visual communication
+
+#### `src/components/FormulaireProfil.tsx`
+- **3-phase profile creation form**:
+  - **Phase 1**: Basic identification (age, gender, disability type, diagnosis)
+  - **Phase 2**: Functional evaluation (mobility aids, motor limitations, medical conditions)
+  - **Phase 3**: Goals and preferences (target body parts, duration, frequency)
+- Form data stored in local state (interface `FormulaireData`)
+- Conditional rendering based on disability category
+- Triggers `onProgramSubmit()` callback to show generation popup
+
+#### `src/components/GenerationPopup.tsx`
+- Animated loading screen when generating personalized program
+- Displays simulated AI processing steps
+- Auto-redirects to sessions tab after completion
+
+#### `src/components/MesSeances.tsx`
+- Displays list of workout sessions (`Seance[]` with nested `Exercise[]`)
+- Expandable accordion view for each session
+- Shows session metadata: title, date, duration, category, difficulty
+- Exercise cards with details: name, duration, reps, personalized advice
+- Clicking exercise ID 2 ("Extensions des bras") opens detailed view
+- Stats overview showing weekly frequency and session count
+
+#### `src/components/ExerciceDetail.tsx`
+- Full-screen detail view for a single exercise
+- Video player section (placeholder if no video URL provided)
+- Sections: Movement description, personalized advice, target muscles, precautions
+- "Mark as completed" button with visual feedback
+- Back button to return to sessions list
+
+#### `src/components/Social.tsx`
+- Placeholder component for future social/community features
+
+### State Management
+
+**No global state management library** - all state is managed with React's `useState` hook:
+
+- `App.tsx`: Navigation state (`activeTab`, `showGenerationPopup`)
+- `FormulaireProfil.tsx`: Form data (`FormulaireData` interface with nested objects)
+- `MesSeances.tsx`: Sessions data, expanded session ID, selected exercise ID
+- `ExerciceDetail.tsx`: Exercise completion status
+
+### Data Structure
+
+Key TypeScript interfaces:
+
+```typescript
+// FormulaireProfil.tsx
+interface FormulaireData {
+  age, genre, taille, poids, niveauActivite, categorieHandicap, diagnostic
+  fauteuilRoulant, aidesMarche, equilibre
+  fonctionMembresSupérieurs: { forcePrehension, amplitudeMouvement, zoneDouleur }
+  fonctionMembresInférieurs: { supportPoids, capaciteEscaliers, zoneDouleur }
+  maintieBuste, douleurActuelle, problemesCardio
+  partiesCorpsPriorite, dureeSouhaitee, frequenceSouhaitee
+}
+
+// MesSeances.tsx
+interface Seance {
+  id, title, date, duration, category, difficulty
+  exercises: Exercise[]
+  completed: boolean
+}
+
+interface Exercise {
+  id, name, duration, reps?, imageUrl, conseil
+  completed: boolean
+}
+```
+
+### Styling Approach
+
+- **Tailwind CSS v4** for all styling (utility-first)
+- Component-specific CSS files: `PhoneMockup.css`, `GenerationPopup.css`
+- Color scheme: Blue (#blue-600) and Orange (#orange-500) gradients throughout
+- Mobile-first responsive design (though optimized for phone mockup)
+- Consistent card-based UI with `rounded-lg`, `shadow-lg`, `bg-white`
+
+## Important Development Notes
+
+### Tailwind CSS v4 Setup
+This project uses Tailwind CSS v4 with the new Vite plugin:
 - No separate postcss.config.js or tailwind.config.js needed
-- Plugin is added directly in vite.config.ts
-- Uses @tailwindcss/vite package instead of standalone tailwindcss
+- Plugin configured directly in `vite.config.ts`
+- Uses `@tailwindcss/vite` package instead of standalone tailwindcss
 
 ### TypeScript Configuration
 - Uses project references for better build performance
 - App code: `tsconfig.app.json`
 - Build tools/config: `tsconfig.node.json`
-- Root `tsconfig.json` only contains references to these files
+- Root `tsconfig.json` only contains references
 
 ### ESLint
 - Uses new flat config format (ESLint 9)
 - Configured with React Hooks and React Refresh rules
 - Ignores `dist` directory
 
-### Context generale
+### Mobile-First Design
+- **All UI components should be optimized for mobile screens**
+- Use the `PhoneMockup` component wrapper for desktop preview
+- Consider touch interactions, scrolling behavior, and mobile viewport sizes
+- Fixed elements (BottomNav, headers) should account for mobile safe areas
 
-cette application est dédiée aux mobiles !!
-
-Tu es un développeur React et le but c’est que tu créer une application vitrine de notre future start up. Voici le projet :
-Objectif : permettre au personnes en situation de handicap de faire du sport pour lutter contre la sédentarité : leur redonner de l’autonomie, sans leur faire courir le risque de blessure
-Comment on le fait:
-Générer des programmes personnalisés (temps,parties du corps, objectifs, handicaps) en fonction des renseignements
-Les exercices existent nous on créer des PROGRAMMES personnalisés  
-L’appli évolue par catégories :
-on ajoute une catégorie après une phase de création des tous les exos pour cette catégorie (après validation et certification)
-2eme niveau de précision dans la catégorie en fonction des informations renseigné dans le profil → donc des conseils personnalisés (texte) en plus de la vidéo du mouvement de base (par ex modifier le poids à soulever, faire le mouvement à moitié)
-Embaucher des kinés pour la base de données initiale
-
-Il n’y a pas de backend rien qu’un front-end !
+### No Backend
+- All data is client-side only
+- Exercise programs are hardcoded in component state
+- Future iterations may add localStorage for persistence
+- Program "generation" is simulated with animations

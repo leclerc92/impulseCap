@@ -246,7 +246,7 @@ const Social = () => {
           <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
             🏆 Mes Badges
           </h3>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+          <div className="grid grid-cols-3  gap-3">
             {achievements.map((achievement) => (
               <div
                 key={achievement.id}
@@ -318,7 +318,7 @@ const Social = () => {
           <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
             👥 Mes Amis
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             {friends.map((friend) => (
               <div
                 key={friend.id}
