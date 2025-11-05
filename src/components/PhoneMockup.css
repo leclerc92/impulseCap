@@ -1,0 +1,219 @@
+/* Container pour centrer le mockup */
+.phone-mockup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+/* Le mockup de l'iPhone */
+.phone-mockup {
+  position: relative;
+  width: 375px;
+  height: 812px;
+  background: #1f1f1f;
+  border-radius: 55px;
+  box-shadow:
+    0 0 0 12px #1f1f1f,
+    0 0 0 14px #2c2c2c,
+    0 30px 60px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+/* Boutons latéraux */
+.phone-button {
+  position: absolute;
+  background: #2c2c2c;
+  z-index: 10;
+}
+
+.phone-button-left {
+  left: -3px;
+  width: 3px;
+  border-radius: 2px 0 0 2px;
+}
+
+.phone-button-right {
+  right: -3px;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+}
+
+.phone-button-mute {
+  top: 120px;
+  height: 35px;
+}
+
+.phone-button-volume-up {
+  top: 180px;
+  height: 60px;
+}
+
+.phone-button-volume-down {
+  top: 260px;
+  height: 60px;
+}
+
+.phone-button-power {
+  top: 200px;
+  height: 80px;
+}
+
+/* Cadre interne */
+.phone-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 45px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Notch (encoche) */
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 30px;
+  background: #000;
+  border-radius: 0 0 20px 20px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.phone-camera {
+  width: 12px;
+  height: 12px;
+  background: #1a1a2e;
+  border-radius: 50%;
+  border: 1px solid #333;
+}
+
+.phone-speaker {
+  width: 60px;
+  height: 6px;
+  background: #1a1a2e;
+  border-radius: 3px;
+}
+
+/* Status bar */
+.phone-status-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  height: 44px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  z-index: 15;
+  background: transparent;
+}
+
+.status-bar-left,
+.status-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.time {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.status-icon {
+  font-size: 14px;
+}
+
+/* Écran de l'application */
+.phone-screen {
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar personnalisée pour l'écran */
+.phone-screen::-webkit-scrollbar {
+  width: 4px;
+}
+
+.phone-screen::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.phone-screen::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+/* Home indicator */
+.phone-home-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  z-index: 20;
+}
+
+/* Responsive pour les petits écrans */
+@media (max-width: 480px) {
+  .phone-mockup-container {
+    padding: 1rem;
+  }
+
+  .phone-mockup {
+    width: 320px;
+    height: 693px;
+    border-radius: 45px;
+  }
+
+  .phone-frame {
+    border-radius: 37px;
+  }
+
+  .phone-notch {
+    width: 150px;
+    height: 25px;
+  }
+}
+
+/* Très petits écrans - retirer le mockup */
+@media (max-width: 380px) {
+  .phone-mockup-container {
+    padding: 0;
+    background: white;
+  }
+
+  .phone-mockup {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .phone-frame {
+    border-radius: 0;
+  }
+
+  .phone-button {
+    display: none;
+  }
+}
