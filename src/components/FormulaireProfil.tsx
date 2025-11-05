@@ -39,7 +39,11 @@ interface FormulaireData {
   frequenceSouhaitee: string;
 }
 
-const FormulaireProfil = () => {
+interface FormulaireProfilProps {
+  onProgramSubmit: () => void;
+}
+
+const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
   const [phase, setPhase] = useState(1);
   const [formData, setFormData] = useState<FormulaireData>({
     age: '32',
@@ -104,8 +108,7 @@ const FormulaireProfil = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Données du formulaire:', formData);
-    alert('Formulaire soumis ! Vérifiez la console pour les données.');
+    // Empêcher la soumission par défaut du formulaire (ex: appui sur Entrée)
   };
 
   const nextPhase = () => {
@@ -828,7 +831,11 @@ const FormulaireProfil = () => {
               </button>
             ) : (
               <button
-                type="submit"
+                type="button"
+                onClick={() => {
+                  console.log('Données du formulaire:', formData);
+                  onProgramSubmit();
+                }}
                 className="px-6 py-3 sm:px-8 bg-gradient-to-r from-blue-600 to-orange-500 text-white rounded-lg font-bold hover:from-blue-700 hover:to-orange-600 transition shadow-lg text-base sm:text-lg"
               >
                 Créer mon programme 🎯
