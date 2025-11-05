@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useRef, useState} from 'react';
 import ExerciceDetail from './ExerciceDetail';
 
 interface Exercise {
@@ -273,6 +273,7 @@ const MesSeances = () => {
 
   const [expandedSeance, setExpandedSeance] = useState<number | null>(1);
   const [selectedExercice, setSelectedExercice] = useState<number | null>(null);
+  const formTopRef = useRef<HTMLDivElement>(null);
 
   const difficultyColors = {
     Débutant: 'bg-green-100 text-green-700 border-green-300',
