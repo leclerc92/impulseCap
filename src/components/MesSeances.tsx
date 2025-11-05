@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ExerciceDetail from './ExerciceDetail';
 
 interface Exercise {
   id: number;
@@ -21,8 +22,40 @@ interface Seance {
   completed: boolean;
 }
 
+// Données enrichies pour l'exercice exemple
+const exerciceDetailData = {
+  id: 1,
+  name: 'Extensions des bras',
+  duration: '3 min',
+  reps: '3 séries de 10',
+  series: '3 séries',
+  videoUrl: '', // Laisser vide pour l'instant, tu ajouteras l'URL plus tard
+  description: `Asseyez-vous confortablement avec le dos bien droit. Tenez un poids léger dans chaque main (ou sans poids pour commencer). Levez lentement vos bras devant vous jusqu'à hauteur d'épaule, puis redescendez de manière contrôlée. Gardez vos coudes légèrement fléchis tout au long du mouvement.`,
+  conseilsPersonnalises: [
+    'Commencez sans poids pour maîtriser le mouvement',
+    'Si vous êtes en fauteuil roulant, assurez-vous que vos freins sont bien serrés',
+    'Respirez : expirez en levant les bras, inspirez en descendant',
+    'Arrêtez immédiatement si vous ressentez une douleur',
+    'Adaptez l\'amplitude selon votre mobilité'
+  ],
+  musclesCibles: [
+    'Deltoïdes antérieurs',
+    'Triceps',
+    'Trapèzes',
+    'Muscles stabilisateurs du tronc'
+  ],
+  precautions: [
+    'Ne forcez jamais au-delà de votre zone de confort',
+    'Évitez cet exercice si vous avez une tendinite d\'épaule non traitée',
+    'Gardez toujours le dos droit pour éviter les tensions',
+    'En cas de vertige, arrêtez et consultez votre médecin',
+    'Hydratez-vous régulièrement pendant l\'exercice'
+  ],
+  completed: false
+};
+
 const MesSeances = () => {
-  const [seances] = useState<Seance[]>([
+  const [seances, setSeances] = useState<Seance[]>([
     {
       id: 1,
       title: 'Renforcement Haut du Corps',
@@ -239,6 +272,7 @@ const MesSeances = () => {
   ]);
 
   const [expandedSeance, setExpandedSeance] = useState<number | null>(1);
+  const [selectedExercice, setSelectedExercice] = useState<number | null>(null);
 
   const difficultyColors = {
     Débutant: 'bg-green-100 text-green-700 border-green-300',
@@ -251,6 +285,40 @@ const MesSeances = () => {
     Cardio: 'bg-orange-500',
     Mobilité: 'bg-purple-500',
   };
+
+  const handleExerciceClick = (exerciceId: number) => {
+    // Pour l'instant, on affiche seulement l'exercice ID 2 (Extensions des bras)
+    if (exerciceId === 2) {
+      setSelectedExercice(exerciceId);
+    }
+  };
+
+  const handleBackFromDetail = () => {
+    setSelectedExercice(null);
+  };
+
+  const handleCompleteExercice = () => {
+    // Marquer l'exercice comme complété dans la liste
+    setSeances(prevSeances =>
+      prevSeances.map(seance => ({
+        ...seance,
+        exercises: seance.exercises.map(ex =>
+          ex.id === selectedExercice ? { ...ex, completed: true } : ex
+        )
+      }))
+    );
+  };
+
+  // Si un exercice est sélectionné, afficher la vue détaillée
+  if (selectedExercice === 2) {
+    return (
+      <ExerciceDetail
+        exercice={exerciceDetailData}
+        onBack={handleBackFromDetail}
+        onComplete={handleCompleteExercice}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
@@ -359,7 +427,8 @@ const MesSeances = () => {
                     {seance.exercises.map((exercise, index) => (
                       <div
                         key={exercise.id}
-                        className="bg-white rounded-lg p-4 shadow-sm"
+                        onClick={() => handleExerciceClick(exercise.id)}
+                        className="bg-white rounded-lg p-4 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all"
                       >
                         <div className="flex items-start gap-3">
                           <div className="flex-shrink-0">
