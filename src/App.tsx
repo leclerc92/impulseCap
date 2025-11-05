@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import PhoneMockup from './components/PhoneMockup';
 import FormulaireProfil from './components/FormulaireProfil';
 import MesSeances from './components/MesSeances';

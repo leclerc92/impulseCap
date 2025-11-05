@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 interface Exercise {
   id: number;
@@ -238,7 +238,8 @@ const MesSeances = () => {
     },
   ]);
 
-  const [expandedSeance, setExpandedSeance] = useState<number | null>(1);
+  const [expandedSeance, setExpandedSeance] = useState<number | null>(null);
+  const formTopRef = useRef<HTMLDivElement>(null);
 
   const difficultyColors = {
     Débutant: 'bg-green-100 text-green-700 border-green-300',
@@ -252,8 +253,12 @@ const MesSeances = () => {
     Mobilité: 'bg-purple-500',
   };
 
+    useEffect(() => {
+        formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, [])
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
+    <div ref={formTopRef} className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
             <div className="flex items-center gap-10">

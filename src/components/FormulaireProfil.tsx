@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 // Types pour les données du formulaire
 interface FormulaireData {
@@ -45,6 +45,7 @@ interface FormulaireProfilProps {
 
 const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
   const [phase, setPhase] = useState(1);
+  const formTopRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState<FormulaireData>({
     age: '32',
     genre: 'homme',
@@ -75,6 +76,11 @@ const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
   });
 
   const [showCardioWarning, setShowCardioWarning] = useState(false);
+
+  // Scroller vers le haut à chaque changement de phase
+  useEffect(() => {
+    formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [phase]);
 
   const handleChange = (field: string, value: any) => {
     setFormData((prev) => ({
@@ -130,7 +136,7 @@ const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-12 px-4 pb-24">
-      <div className="max-w-4xl mx-auto">
+      <div ref={formTopRef} className="max-w-4xl mx-auto">
         {/* En-tête */}
         <div className="text-center mb-8">
             <div className="flex items-center gap-10">
