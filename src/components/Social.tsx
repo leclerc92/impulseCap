@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface User {
   id: number;
@@ -36,12 +36,19 @@ interface Challenge {
 }
 
 const Social = () => {
+  const topRef = useRef<HTMLDivElement>(null);
+
   const currentUser: User = {
     id: 0,
     name: 'Marc Dubois',
     avatar: '👨',
     status: 'En pleine forme !',
   };
+
+  // Scroller en haut au montage du composant
+  useEffect(() => {
+    topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
 
   const [friends] = useState<User[]>([
     { id: 1, name: 'Sophie Martin', avatar: '👩', status: '🔥 Série de 5 jours !' },
@@ -191,7 +198,7 @@ const Social = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
+    <div ref={topRef} className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-6">
