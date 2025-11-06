@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import PremiumPopup from './PremiumPopup';
 
 interface User {
   id: number;
@@ -208,7 +209,7 @@ const Social = () => {
   };
 
   return (
-    <div ref={topRef} className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
+    <div ref={topRef} className="relative min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-6">
@@ -500,100 +501,7 @@ const Social = () => {
       </div>
 
       {/* Modal Premium */}
-      {showPremiumModal && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-          onClick={handleClosePremiumModal}
-        >
-          <div 
-            className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header avec dégradé */}
-            <div className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 p-6 text-white text-center">
-              <div className="text-6xl mb-3">👑</div>
-              <h2 className="text-2xl font-bold mb-2">Passez à Premium</h2>
-              <p className="text-sm text-yellow-100">
-                Débloquez toutes les fonctionnalités sociales
-              </p>
-            </div>
-
-            {/* Contenu */}
-            <div className="p-6">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">
-                Avec Premium, vous pouvez :
-              </h3>
-              
-              <div className="space-y-3 mb-6">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">Contacter vos amis</p>
-                    <p className="text-sm text-gray-600">Envoyez des messages privés et encouragements</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">Lancer des défis</p>
-                    <p className="text-sm text-gray-600">Créez des défis personnalisés entre amis</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">Groupes privés</p>
-                    <p className="text-sm text-gray-600">Rejoignez ou créez des groupes de motivation</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">Statistiques avancées</p>
-                    <p className="text-sm text-gray-600">Comparez vos progrès avec vos amis</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Prix */}
-              <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-lg p-4 mb-6 text-center">
-                <p className="text-sm text-gray-600 mb-1">À partir de</p>
-                <p className="text-3xl font-bold text-orange-600 mb-1">
-                  9,99€<span className="text-lg text-gray-600">/mois</span>
-                </p>
-                <p className="text-xs text-gray-600">Sans engagement</p>
-              </div>
-
-              {/* Boutons */}
-              <div className="space-y-3">
-                <button 
-                  className="w-full bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all transform hover:scale-105"
-                  onClick={handleClosePremiumModal}
-                >
-                  Découvrir Premium 👑
-                </button>
-                <button 
-                  className="w-full bg-gray-200 text-gray-700 font-medium py-3 rounded-lg hover:bg-gray-300 transition"
-                  onClick={handleClosePremiumModal}
-                >
-                  Plus tard
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {showPremiumModal && <PremiumPopup onClose={handleClosePremiumModal} />}
     </div>
   );
 };

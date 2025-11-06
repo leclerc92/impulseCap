@@ -146,6 +146,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  /* Créer un contexte de positionnement pour les popups fixed */
+  transform: translateZ(0);
 }
 
 /* Scrollbar personnalisée pour l'écran */
