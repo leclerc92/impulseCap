@@ -24,7 +24,7 @@ interface Seance {
 
 // Données enrichies pour l'exercice exemple
 const exerciceDetailData = {
-  id: 1,
+  id: 2,
   name: 'Extensions des bras',
   duration: '3 min',
   reps: '3 séries de 10',
@@ -51,14 +51,219 @@ conseilsPersonnalises: [
     'En cas de vertige, arrêtez et consultez votre médecin',
     'Hydratez-vous régulièrement pendant l\'exercice'
   ],
-  completed: false
+  completed: false,
+  hasVariants: false
+};
+
+// Données pour montées sur pointes (débutant)
+const monteesPointesDebutantData = {
+  id: 10,
+  name: 'Montées sur pointes (Débutant)',
+  duration: '4 min',
+  reps: '3 séries de 10',
+  series: '3 séries',
+  videoUrl: '',
+  description: `Tenez-vous debout face à un mur ou un support stable (table, chaise). Placez vos mains sur le support pour maintenir l'équilibre. Montez doucement sur la pointe des deux pieds en même temps, en contractant les mollets. Maintenez la position 2 secondes, puis redescendez lentement. Gardez les genoux légèrement fléchis, surtout le genou droit.`,
+  conseilsPersonnalises: [
+    'Utilisez votre canne ou un support solide pour l\'équilibre',
+    'Version débutant : montez sur les deux pieds en même temps',
+    'Ne montez pas trop haut au début, l\'amplitude viendra progressivement',
+    'Protégez votre genou droit en évitant de le verrouiller',
+    'Si vous ressentez une douleur au genou, arrêtez l\'exercice'
+  ],
+  musclesCibles: [
+    'Gastrocnémiens (mollets)',
+    'Soléaires',
+    'Muscles stabilisateurs de la cheville',
+    'Muscles profonds du pied'
+  ],
+  precautions: [
+    'Attention à votre arthrose du genou droit - ne forcez jamais',
+    'Assurez-vous d\'avoir un support stable à portée de main',
+    'Arrêtez si vous ressentez une douleur au genou ou à la cheville',
+    'Évitez cet exercice si vous avez des vertiges',
+    'Progression : une fois à l\'aise, passez à la version confirmée (un pied)'
+  ],
+  completed: false,
+  hasVariants: true,
+  variantId: 11 // ID de la version confirmée
+};
+
+// Données pour montées sur pointes (confirmé)
+const monteesPointesConfirmeData = {
+  id: 11,
+  name: 'Montées sur pointes (Confirmé)',
+  duration: '5 min',
+  reps: '3 séries de 8 par pied',
+  series: '3 séries',
+  videoUrl: '',
+  description: `Version avancée : Tenez-vous debout avec un support proche. Levez un pied du sol (genou fléchi). Montez sur la pointe du pied d'appui, maintenez 2 secondes, puis redescendez lentement. Alternez les pieds entre chaque série. Commencez par le pied gauche (non douloureux) pour prendre confiance.`,
+  conseilsPersonnalises: [
+    'Niveau confirmé : un pied à la fois',
+    'Commencez par le pied gauche pour vous habituer',
+    'Soyez très progressif avec le pied droit (genou arthrosique)',
+    'Gardez le support à portée de main pour l\'équilibre',
+    'Si trop difficile, revenez à la version débutant (deux pieds)'
+  ],
+  musclesCibles: [
+    'Gastrocnémiens',
+    'Soléaires',
+    'Stabilisateurs de cheville',
+    'Proprioception et équilibre'
+  ],
+  precautions: [
+    'Exercice avancé - ne le tentez que si la version débutant est maîtrisée',
+    'Doublez la prudence avec le pied droit à cause de l\'arthrose du genou',
+    'Arrêtez immédiatement en cas de douleur',
+    'Progression très graduelle recommandée',
+    'Consultez votre kinésithérapeute avant de passer à cette version'
+  ],
+  completed: false,
+  hasVariants: true,
+  variantId: 10 // ID de la version débutant
+};
+
+// Données pour squats avec chaise (débutant)
+const squatsAvecChaiseData = {
+  id: 12,
+  name: 'Squats avec chaise (Débutant)',
+  duration: '5 min',
+  reps: '3 séries de 8',
+  series: '3 séries',
+  videoUrl: '',
+  description: `Placez une chaise solide derrière vous. Tenez-vous debout, pieds écartés largeur d'épaules, face à un support si nécessaire. Descendez lentement en pliant les genoux comme pour vous asseoir, jusqu'à toucher légèrement la chaise avec vos fesses. Ne vous asseyez pas complètement. Remontez ensuite en poussant sur vos talons. Gardez le dos droit et les genoux alignés avec les pieds.`,
+  conseilsPersonnalises: [
+    'Version débutant : la chaise est là pour vous rassurer et limiter la descente',
+    'Touchez simplement la chaise, ne vous asseyez pas',
+    'Utilisez votre canne ou un support devant vous pour l\'équilibre',
+    'Ne descendez pas trop bas pour protéger votre genou droit',
+    'Poussez davantage sur la jambe gauche si le genou droit est sensible'
+  ],
+  musclesCibles: [
+    'Quadriceps',
+    'Fessiers (grands et moyens)',
+    'Ischio-jambiers',
+    'Muscles stabilisateurs du tronc'
+  ],
+  precautions: [
+    'Évitez de descendre en dessous de 90° au niveau des genoux',
+    'Attention particulière au genou droit - arrêtez si douleur',
+    'Ne laissez jamais les genoux dépasser les orteils',
+    'Gardez toujours le poids sur les talons, pas sur les orteils',
+    'Si trop difficile, contentez-vous de mini-flexions'
+  ],
+  completed: false,
+  hasVariants: true,
+  variantId: 13 // ID de la version confirmée
+};
+
+// Données pour squats sans chaise (confirmé)
+const squatsSansChaiseData = {
+  id: 13,
+  name: 'Squats sans chaise (Confirmé)',
+  duration: '6 min',
+  reps: '3 séries de 10',
+  series: '3 séries',
+  videoUrl: '',
+  description: `Version avancée sans chaise. Pieds écartés largeur d'épaules, descendez en pliant les genoux et en poussant les fesses vers l'arrière comme pour vous asseoir. Descendez jusqu'à ce que vos cuisses soient parallèles au sol (ou moins bas selon votre confort). Remontez en poussant sur les talons. Gardez le dos droit, la poitrine ouverte et les abdominaux contractés.`,
+  conseilsPersonnalises: [
+    'Niveau confirmé : sans support arrière',
+    'Contrôlez bien la descente, pas de mouvement brusque',
+    'Gardez un support à portée de main pour l\'équilibre si nécessaire',
+    'Adaptez l\'amplitude selon votre genou droit',
+    'Si trop difficile, revenez à la version avec chaise'
+  ],
+  musclesCibles: [
+    'Quadriceps (vaste médial, latéral, intermédiaire)',
+    'Grands fessiers',
+    'Ischio-jambiers',
+    'Core (abdominaux et lombaires)'
+  ],
+  precautions: [
+    'Exercice avancé - maîtrisez d\'abord la version avec chaise',
+    'Votre genou droit peut limiter l\'amplitude - c\'est normal',
+    'Ne forcez jamais si vous ressentez une douleur',
+    'Maintenez toujours les genoux alignés avec les pieds',
+    'Consultez votre kinésithérapeute pour validation'
+  ],
+  completed: false,
+  hasVariants: true,
+  variantId: 12 // ID de la version débutant
+};
+
+// Données pour fentes statiques (débutant)
+const fentesStatiquesData = {
+  id: 14,
+  name: 'Fentes statiques (Débutant)',
+  duration: '5 min',
+  reps: '3 séries de 6 par jambe',
+  series: '3 séries',
+  videoUrl: '',
+  description: `Tenez-vous debout près d\'un mur ou d\'un support. Avancez un pied devant vous (environ 60-80 cm). Gardez cette position fixe. Fléchissez les deux genoux en descendant le corps verticalement, jusqu\'à ce que le genou arrière s\'approche du sol (sans le toucher). Remontez en poussant sur le talon avant. Les pieds ne bougent pas pendant toute la série. Puis changez de jambe.`,
+  conseilsPersonnalises: [
+    'Version débutant : position statique, pas de déplacement',
+    'Tenez-vous à un mur ou une chaise pour l\'équilibre',
+    'Commencez par la jambe gauche devant (genou sain)',
+    'Amplitude réduite si le genou droit est devant',
+    'Si trop difficile, contentez-vous de petites flexions'
+  ],
+  musclesCibles: [
+    'Quadriceps (jambe avant)',
+    'Fessiers',
+    'Ischio-jambiers',
+    'Stabilisateurs de hanche et genou'
+  ],
+  precautions: [
+    'Le genou avant ne doit jamais dépasser les orteils',
+    'Attention au genou droit - commencez toujours par le gauche',
+    'Gardez le buste droit, ne vous penchez pas en avant',
+    'Arrêtez si vous ressentez une douleur au genou ou à la hanche',
+    'Support obligatoire pour la sécurité'
+  ],
+  completed: false,
+  hasVariants: true,
+  variantId: 15 // ID de la version confirmée
+};
+
+// Données pour fentes dynamiques (confirmé)
+const fentesDynamiquesData = {
+  id: 15,
+  name: 'Fentes dynamiques (Confirmé)',
+  duration: '6 min',
+  reps: '3 séries de 8 par jambe',
+  series: '3 séries',
+  videoUrl: '',
+  description: `Version avancée en mouvement. Debout, pieds joints. Faites un grand pas en avant avec un pied, fléchissez les deux genoux jusqu\'à ce que le genou arrière s\'approche du sol. Poussez sur le talon avant pour revenir à la position de départ. Alternez les jambes à chaque répétition. Mouvement fluide et contrôlé.`,
+  conseilsPersonnalises: [
+    'Niveau confirmé : fentes en mouvement',
+    'Commencez avec de petits pas si vous n\'êtes pas à l\'aise',
+    'Privilégiez la jambe gauche si le genou droit est sensible',
+    'Gardez un support à proximité en cas de déséquilibre',
+    'Si trop difficile, revenez à la version statique'
+  ],
+  musclesCibles: [
+    'Quadriceps',
+    'Grands fessiers',
+    'Ischio-jambiers',
+    'Coordination et équilibre dynamique'
+  ],
+  precautions: [
+    'Exercice avancé nécessitant un bon équilibre',
+    'Ne tentez cet exercice que si les fentes statiques sont maîtrisées',
+    'Votre arthrose du genou droit peut limiter l\'amplitude',
+    'Assurez-vous d\'avoir de l\'espace dégagé autour de vous',
+    'Validez avec votre kinésithérapeute avant de commencer'
+  ],
+  completed: false,
+  hasVariants: true,
+  variantId: 14 // ID de la version débutant
 };
 
 const MesSeances = () => {
   const [seances, setSeances] = useState<Seance[]>([
     {
       id: 1,
-      title: 'Renforcement Haut du Corps',
+      title: 'Renforcement Bras & Épaules',
       date: "Aujourd'hui - 10h00",
       duration: '30 min',
       category: 'Force',
@@ -70,7 +275,7 @@ const MesSeances = () => {
           name: 'Échauffement des épaules',
           duration: '5 min',
           imageUrl: '🔄',
-          conseil: 'Effectuez des rotations douces, restez assis dans votre fauteuil',
+          conseil: 'Effectuez des rotations douces, restez en position stable avec support si nécessaire',
           completed: false,
         },
         {
@@ -79,7 +284,7 @@ const MesSeances = () => {
           duration: '3 min',
           reps: '3 séries de 10',
           imageUrl: '💪',
-          conseil: 'Utilisez des poids légers (0.5-1kg) ou sans poids',
+          conseil: 'Utilisez des poids légers (0.5-1kg) ou sans poids. Adapté à votre bonne force de préhension',
           completed: false,
         },
         {
@@ -88,21 +293,21 @@ const MesSeances = () => {
           duration: '3 min',
           reps: '3 séries de 8',
           imageUrl: '🏋️',
-          conseil: 'Gardez le dos droit, levez les bras à hauteur d\'épaule',
+          conseil: 'Gardez le dos droit, levez les bras à hauteur d\'épaule. Adaptez l\'amplitude selon votre confort',
           completed: false,
         },
         {
           id: 4,
-          name: 'Rotations du tronc',
+          name: 'Rotations du tronc assis',
           duration: '4 min',
           reps: '3 séries de 12',
           imageUrl: '🌀',
-          conseil: 'Mouvement lent et contrôlé, renforcez les abdominaux',
+          conseil: 'Mouvement lent et contrôlé, idéal pour renforcer le tronc',
           completed: false,
         },
         {
           id: 5,
-          name: 'Étirements doux',
+          name: 'Étirements doux épaules et bras',
           duration: '5 min',
           imageUrl: '🧘',
           conseil: 'Respirez profondément, maintenez chaque étirement 20 secondes',
@@ -112,159 +317,117 @@ const MesSeances = () => {
     },
     {
       id: 2,
-      title: 'Cardio Adapté',
+      title: 'Renforcement Membres Inférieurs',
       date: 'Demain - 14h30',
-      duration: '25 min',
-      category: 'Cardio',
+      duration: '30 min',
+      category: 'Force',
       difficulty: 'Débutant',
       completed: false,
       exercises: [
         {
           id: 1,
-          name: 'Échauffement articulaire',
+          name: 'Échauffement des jambes',
           duration: '5 min',
           imageUrl: '🔥',
-          conseil: 'Mobilisez doucement toutes les articulations du haut du corps',
+          conseil: 'Mobilisez doucement les chevilles et genoux. Utilisez votre canne pour le support',
           completed: false,
         },
         {
-          id: 2,
-          name: 'Boxe assise',
-          duration: '8 min',
-          reps: '4 séries de 1 min',
-          imageUrl: '🥊',
-          conseil: 'Alternez coups droits et crochets, repos 30s entre séries',
+          id: 10,
+          name: 'Montées sur pointes (Débutant)',
+          duration: '4 min',
+          reps: '3 séries de 10',
+          imageUrl: '�',
+          conseil: 'Débutant: Montez sur les pointes avec les deux pieds en même temps. Tenez-vous à un support stable. Attention au genou droit',
           completed: false,
         },
         {
-          id: 3,
-          name: 'Moulinets de bras',
-          duration: '6 min',
-          reps: '3 séries de 30s',
-          imageUrl: '🌪️',
-          conseil: 'Augmentez progressivement la vitesse',
+          id: 12,
+          name: 'Squats avec chaise (Débutant)',
+          duration: '5 min',
+          reps: '3 séries de 8',
+          imageUrl: '🪑',
+          conseil: 'Débutant: Placez une chaise derrière vous, descendez jusqu\'à la toucher puis remontez. Protégez votre genou droit',
           completed: false,
         },
         {
-          id: 4,
-          name: 'Retour au calme',
-          duration: '6 min',
-          imageUrl: '😌',
-          conseil: 'Respirations profondes, détendez-vous',
+          id: 14,
+          name: 'Fentes statiques (Débutant)',
+          duration: '5 min',
+          reps: '3 séries de 6 par jambe',
+          imageUrl: '🦵',
+          conseil: 'Débutant: Position fixe, fléchissez les jambes sans bouger les pieds. Support recommandé. Évitez de forcer sur le genou droit',
+          completed: false,
+        },
+        {
+          id: 5,
+          name: 'Renforcement mollets assis',
+          duration: '4 min',
+          reps: '3 séries de 15',
+          imageUrl: '�',
+          conseil: 'Assis, soulevez les talons du sol. Exercice doux pour les mollets',
+          completed: false,
+        },
+        {
+          id: 6,
+          name: 'Étirements des jambes',
+          duration: '7 min',
+          imageUrl: '�',
+          conseil: 'Étirez doucement les mollets, cuisses et hanches. Évitez les tensions au genou droit',
           completed: false,
         },
       ],
     },
     {
       id: 3,
-      title: 'Mobilité et Souplesse',
+      title: 'Tronc & Stabilité',
       date: 'Mercredi - 9h00',
-      duration: '20 min',
-      category: 'Mobilité',
+      duration: '25 min',
+      category: 'Force',
       difficulty: 'Débutant',
       completed: false,
       exercises: [
         {
           id: 1,
-          name: 'Cercles de bras',
+          name: 'Échauffement du tronc',
           duration: '4 min',
-          imageUrl: '⭕',
-          conseil: 'Mouvements amples et contrôlés',
+          imageUrl: '�',
+          conseil: 'Mouvements doux de rotation et flexion du buste',
           completed: false,
         },
         {
           id: 2,
-          name: 'Flexions du tronc',
+          name: 'Flexions latérales du tronc',
           duration: '5 min',
+          reps: '3 séries de 10',
           imageUrl: '↔️',
-          conseil: 'Penchez-vous doucement sur les côtés',
+          conseil: 'Penchez-vous doucement sur les côtés, maintenez votre stabilité assise',
           completed: false,
         },
         {
           id: 3,
-          name: 'Étirements du cou',
-          duration: '4 min',
-          imageUrl: '👆',
-          conseil: 'Inclinez lentement la tête de chaque côté',
+          name: 'Rotations du tronc',
+          duration: '5 min',
+          reps: '3 séries de 12',
+          imageUrl: '�',
+          conseil: 'Tournez le buste de gauche à droite, travaillez les abdominaux obliques',
           completed: false,
         },
         {
           id: 4,
-          name: 'Rotations des poignets',
-          duration: '3 min',
-          imageUrl: '👐',
-          conseil: 'Mouvements circulaires dans les deux sens',
-          completed: false,
-        },
-        {
-          id: 5,
-          name: 'Respiration guidée',
+          name: 'Gainage adapté',
           duration: '4 min',
-          imageUrl: '🫁',
-          conseil: 'Inspirez 4 secondes, expirez 6 secondes',
-          completed: false,
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: 'Force Progressive',
-      date: 'Vendredi - 16h00',
-      duration: '35 min',
-      category: 'Force',
-      difficulty: 'Intermédiaire',
-      completed: false,
-      exercises: [
-        {
-          id: 1,
-          name: 'Échauffement complet',
-          duration: '5 min',
-          imageUrl: '🔥',
-          conseil: 'Préparez vos muscles et articulations',
-          completed: false,
-        },
-        {
-          id: 2,
-          name: 'Développé militaire assis',
-          duration: '5 min',
-          reps: '4 séries de 10',
-          imageUrl: '🏋️',
-          conseil: 'Poids légers, contrôlez la descente',
-          completed: false,
-        },
-        {
-          id: 3,
-          name: 'Tirages élastiques',
-          duration: '5 min',
-          reps: '4 séries de 12',
-          imageUrl: '🎯',
-          conseil: 'Utilisez un élastique de résistance moyenne',
-          completed: false,
-        },
-        {
-          id: 4,
-          name: 'Planches adaptées',
-          duration: '6 min',
-          reps: '3 séries de 30s',
+          reps: '3 séries de 20s',
           imageUrl: '⬜',
-          conseil: 'Sur les avant-bras, dos droit si possible',
+          conseil: 'Position assise, contractez les abdominaux et maintenez le dos droit',
           completed: false,
         },
         {
           id: 5,
-          name: 'Curls biceps',
-          duration: '4 min',
-          reps: '3 séries de 15',
-          imageUrl: '💪',
-          conseil: 'Mouvement lent, contractez bien le biceps',
-          completed: false,
-        },
-        {
-          id: 6,
-          name: 'Cool down',
-          duration: '10 min',
-          imageUrl: '🧊',
-          conseil: 'Étirements et relaxation',
+          name: 'Étirements du dos',
+          duration: '7 min',
+          imageUrl: '�',
+          conseil: 'Respirations profondes, relâchez les tensions du dos et tronc',
           completed: false,
         },
       ],
@@ -288,8 +451,9 @@ const MesSeances = () => {
   };
 
   const handleExerciceClick = (exerciceId: number) => {
-    // Pour l'instant, on affiche seulement l'exercice ID 2 (Extensions des bras)
-    if (exerciceId === 2) {
+    // Afficher les exercices détaillés disponibles
+    const availableExercices = [2, 10, 11, 12, 13, 14, 15];
+    if (availableExercices.includes(exerciceId)) {
       setSelectedExercice(exerciceId);
     }
   };
@@ -315,13 +479,34 @@ const MesSeances = () => {
     formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []); // Tableau vide = exécution uniquement au montage du composant
 
+  // Sélectionner les données de l'exercice en fonction de l'ID
+  const getExerciceData = () => {
+    switch(selectedExercice) {
+      case 2: return exerciceDetailData;
+      case 10: return monteesPointesDebutantData;
+      case 11: return monteesPointesConfirmeData;
+      case 12: return squatsAvecChaiseData;
+      case 13: return squatsSansChaiseData;
+      case 14: return fentesStatiquesData;
+      case 15: return fentesDynamiquesData;
+      default: return null;
+    }
+  };
+
+  // Fonction pour changer de variante (débutant <-> confirmé)
+  const handleSwitchVariant = (variantId: number) => {
+    setSelectedExercice(variantId);
+  };
+
   // Si un exercice est sélectionné, afficher la vue détaillée
-  if (selectedExercice === 2) {
+  const exerciceData = getExerciceData();
+  if (selectedExercice && exerciceData) {
     return (
       <ExerciceDetail
-        exercice={exerciceDetailData}
+        exercice={exerciceData}
         onBack={handleBackFromDetail}
         onComplete={handleCompleteExercice}
+        onSwitchVariant={handleSwitchVariant}
       />
     );
   }
@@ -350,11 +535,11 @@ const MesSeances = () => {
             <div className="text-xs text-gray-600 mt-1">séances/semaine</div>
           </div>
           <div className="bg-white rounded-lg p-4 shadow-md text-center">
-            <div className="text-3xl font-bold text-orange-600">28</div>
+            <div className="text-3xl font-bold text-orange-600">30</div>
             <div className="text-xs text-gray-600 mt-1">min/séance</div>
           </div>
           <div className="bg-white rounded-lg p-4 shadow-md text-center">
-            <div className="text-3xl font-bold text-green-600">12</div>
+            <div className="text-3xl font-bold text-green-600">8</div>
             <div className="text-xs text-gray-600 mt-1">séances faites</div>
           </div>
         </div>
@@ -476,8 +661,8 @@ const MesSeances = () => {
         <div className="mt-6 bg-gradient-to-r from-blue-600 to-orange-500 rounded-lg p-6 text-white shadow-lg">
           <h3 className="text-xl font-bold mb-2">🎯 Prochaine séance recommandée</h3>
           <p className="text-blue-50 mb-4">
-            Basé sur votre profil et votre historique, nous vous recommandons de
-            commencer par "Renforcement Haut du Corps"
+            Basé sur votre profil (arthrose genou droit, priorité Bras/Tronc/Épaules), 
+            nous vous recommandons de commencer par "Renforcement Bras & Épaules"
           </p>
           <button className="bg-white text-blue-600 px-6 py-2 rounded-lg font-bold hover:bg-blue-50 transition">
             Démarrer maintenant

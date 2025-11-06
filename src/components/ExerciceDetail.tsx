@@ -13,13 +13,19 @@ interface ExerciceDetailProps {
     musclesCibles: string[];
     precautions: string[];
     completed: boolean;
+    hasVariants?: boolean; // Indique si l'exercice a des variantes débutant/confirmé
+    variantId?: number; // ID de la version alternative (débutant <-> confirmé)
   };
   onBack: () => void;
   onComplete: () => void;
+  onSwitchVariant?: (variantId: number) => void; // Callback pour changer de variante
 }
 
-const ExerciceDetail = ({ exercice, onBack, onComplete }: ExerciceDetailProps) => {
+const ExerciceDetail = ({ exercice, onBack, onComplete, onSwitchVariant }: ExerciceDetailProps) => {
   const [isCompleted, setIsCompleted] = useState(exercice.completed);
+  
+  // Déterminer si c'est la version débutant ou confirmé
+  const isDebutant = exercice.name.includes('(Débutant)');
 
   const handleComplete = () => {
     setIsCompleted(true);
@@ -47,6 +53,38 @@ const ExerciceDetail = ({ exercice, onBack, onComplete }: ExerciceDetailProps) =
           <h1 className="text-3xl font-bold text-blue-900 mb-2">
             {exercice.name}
           </h1>
+          
+          {/* Sélecteur de niveau si l'exercice a des variantes */}
+          {exercice.hasVariants && onSwitchVariant && exercice.variantId && (
+            <div className="mb-4 p-4 bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-300 rounded-lg">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-700 mb-1">
+                    Niveau actuel : <span className={`font-bold ${isDebutant ? 'text-green-600' : 'text-blue-600'}`}>
+                      {isDebutant ? '🌱 Débutant' : '⭐ Confirmé'}
+                    </span>
+                  </p>
+                  <p className="text-xs text-gray-600">
+                    {isDebutant 
+                      ? 'Vous pouvez passer au niveau confirmé une fois cet exercice maîtrisé'
+                      : 'Vous pouvez revenir au niveau débutant si nécessaire'
+                    }
+                  </p>
+                </div>
+                <button
+                  onClick={() => onSwitchVariant(exercice.variantId!)}
+                  className={`px-4 py-2 rounded-lg font-medium text-sm transition-all transform hover:scale-105 ${
+                    isDebutant 
+                      ? 'bg-blue-500 hover:bg-blue-600 text-white'
+                      : 'bg-green-500 hover:bg-green-600 text-white'
+                  }`}
+                >
+                  {isDebutant ? '⬆️ Passer au niveau Confirmé' : '⬇️ Revenir au niveau Débutant'}
+                </button>
+              </div>
+            </div>
+          )}
+          
           <div className="flex flex-wrap gap-3 text-sm">
             <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-medium">
               ⏱️ {exercice.duration}

@@ -47,15 +47,15 @@ const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
   const [phase, setPhase] = useState(1);
   const formTopRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState<FormulaireData>({
-    age: '32',
-    genre: 'homme',
-    taille: '175',
-    poids: '72',
+    age: '62',
+    genre: 'femme',
+    taille: '160',
+    poids: '61',
     niveauActivite: 'Faible',
-    categorieHandicap: 'moteur',
-    diagnostic: 'Paraplégie partielle suite à un accident',
-    fauteuilRoulant: 'oui',
-    aidesMarche: [],
+    categorieHandicap: 'Moteur',
+    diagnostic: 'Arthrose genou droit',
+    fauteuilRoulant: 'non',
+    aidesMarche: ['Cannes'],
     equilibre: 'stable-avec-support',
     fonctionMembresSupérieurs: {
       forcePrehension: 'bonne',
@@ -64,7 +64,7 @@ const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
     },
     fonctionMembresInférieurs: {
       supportPoids: 'partiel',
-      capaciteEscaliers: 'impossible',
+      capaciteEscaliers: 'avec-aide',
       zoneDouleur: 'Genou droit',
     },
     maintieBuste: 'tient-assis',
@@ -127,7 +127,7 @@ const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
 
   // Logique conditionnelle pour afficher les questions selon le handicap
   const shouldShowMotorDetails = () => {
-    return formData.categorieHandicap === 'moteur';
+    return formData.categorieHandicap === 'Moteur';
   };
 
   const isAmputation = () => {
@@ -307,7 +307,7 @@ const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
                     Catégorie de Handicap Principal *
                   </label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {['moteur', 'sensoriel'].map((categorie) => (
+                    {['Moteur', 'Sensoriel'].map((categorie) => (
                       <label
                         key={categorie}
                         className={`flex items-center justify-center px-6 py-4 border-2 rounded-lg cursor-pointer transition ${
@@ -797,7 +797,7 @@ const FormulaireProfil = ({ onProgramSubmit }: FormulaireProfilProps) => {
                   </div>
                   <div>
                     <span className="font-semibold">Handicap:</span>{' '}
-                    {formData.categorieHandicap}
+                    {formData.categorieHandicap} - {formData.diagnostic}
                   </div>
                   <div>
                     <span className="font-semibold">Fréquence:</span>{' '}
