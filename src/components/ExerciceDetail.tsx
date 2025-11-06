@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 interface ExerciceDetailProps {
   exercice: {
@@ -23,14 +23,20 @@ interface ExerciceDetailProps {
 
 const ExerciceDetail = ({ exercice, onBack, onComplete, onSwitchVariant }: ExerciceDetailProps) => {
   const [isCompleted, setIsCompleted] = useState(exercice.completed);
-  
-  // Déterminer si c'est la version débutant ou confirmé
+  const formTopRef = useRef<HTMLDivElement>(null);
+
+    // Déterminer si c'est la version débutant ou confirmé
   const isDebutant = exercice.name.includes('(Débutant)');
 
   const handleComplete = () => {
     setIsCompleted(true);
     onComplete();
   };
+
+    // Scroll vers le haut à l'ouverture de la page
+    useEffect(() => {
+        formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, []); // Tableau vide = exécution uniquement au montage du composant
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 pb-24">

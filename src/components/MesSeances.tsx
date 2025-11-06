@@ -434,7 +434,7 @@ const MesSeances = () => {
     },
   ]);
 
-  const [expandedSeance, setExpandedSeance] = useState<number | null>(1);
+  const [expandedSeance, setExpandedSeance] = useState<number | null>(0);
   const [selectedExercice, setSelectedExercice] = useState<number | null>(null);
   const formTopRef = useRef<HTMLDivElement>(null);
 
@@ -455,6 +455,18 @@ const MesSeances = () => {
     const availableExercices = [2, 10, 11, 12, 13, 14, 15];
     if (availableExercices.includes(exerciceId)) {
       setSelectedExercice(exerciceId);
+    }
+  };
+
+  const handleStartSeance = (seance: Seance) => {
+    // Trouver le premier exercice de la séance qui a des détails disponibles
+    const availableExercices = [2, 10, 11, 12, 13, 14, 15];
+    const firstAvailableExercice = seance.exercises.find(ex =>
+      availableExercices.includes(ex.id)
+    );
+
+    if (firstAvailableExercice) {
+      setSelectedExercice(firstAvailableExercice.id);
     }
   };
 
@@ -594,7 +606,13 @@ const MesSeances = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <button className="px-4 py-2 bg-gradient-to-r from-blue-600 to-orange-500 text-white rounded-lg font-medium text-sm hover:from-blue-700 hover:to-orange-600 transition">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); // Empêcher l'accordion de se fermer/ouvrir
+                        handleStartSeance(seance);
+                      }}
+                      className="px-4 py-2 bg-gradient-to-r from-blue-600 to-orange-500 text-white rounded-lg font-medium text-sm hover:from-blue-700 hover:to-orange-600 transition"
+                    >
                       Démarrer
                     </button>
                     <span
