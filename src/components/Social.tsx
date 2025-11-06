@@ -197,6 +197,16 @@ const Social = () => {
     );
   };
 
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
+
+  const handleFriendClick = () => {
+    setShowPremiumModal(true);
+  };
+
+  const handleClosePremiumModal = () => {
+    setShowPremiumModal(false);
+  };
+
   return (
     <div ref={topRef} className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-8 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
@@ -267,9 +277,16 @@ const Social = () => {
 
         {/* Active Challenges */}
         <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-            🎯 Défis Actifs
-          </h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+              🎯 Défis Actifs
+            </h3>
+            {/* Badge Premium pour défis personnalisés */}
+            <div className="flex items-center gap-2 bg-gradient-to-r from-purple-400 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+              <span>⭐</span>
+              <span>Défis personnalisés</span>
+            </div>
+          </div>
           <div className="space-y-3">
             {challenges.map((challenge) => (
               <div
@@ -310,20 +327,68 @@ const Social = () => {
                 </div>
               </div>
             ))}
+            
+            {/* Bouton pour créer un défi personnalisé */}
+            <button
+              onClick={handleFriendClick}
+              className="w-full border-2 border-dashed border-purple-300 rounded-lg p-4 hover:border-purple-500 hover:bg-purple-50 transition text-center group"
+            >
+              <div className="flex items-center justify-center gap-2 text-purple-600">
+                <span className="text-2xl">➕</span>
+                <div>
+                  <p className="font-bold">Créer un défi personnalisé</p>
+                  <p className="text-xs text-gray-600">
+                    <span className="inline-flex items-center gap-1">
+                      <span>👑</span>
+                      <span>Nécessite Premium</span>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </button>
           </div>
         </div>
 
         {/* Friends Section */}
         <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-          <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-            👥 Mes Amis
-          </h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+              👥 Mes Amis
+            </h3>
+            {/* Badge Premium */}
+            <div className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+              <span>👑</span>
+              <span>PREMIUM</span>
+            </div>
+          </div>
+          
+          {/* Message d'information Premium */}
+          <div className="mb-4 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-lg">
+            <p className="text-sm text-gray-700 flex items-center gap-2">
+              <span className="text-lg">�</span>
+              <span>
+                <strong>Passez à Premium</strong> pour contacter vos amis et leur lancer des défis personnalisés !
+              </span>
+            </p>
+          </div>
+
           <div className="grid grid-cols-2 gap-3">
             {friends.map((friend) => (
               <div
                 key={friend.id}
-                className="text-center p-3 rounded-lg border-2 border-gray-200 hover:border-orange-300 transition cursor-pointer"
+                onClick={handleFriendClick}
+                className="relative text-center p-3 rounded-lg border-2 border-gray-200 hover:border-orange-300 transition cursor-pointer group"
               >
+                {/* Overlay Premium */}
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="bg-white/90 px-3 py-2 rounded-lg shadow-lg">
+                    <p className="text-xs font-bold text-orange-600 flex items-center gap-1">
+                      <span>👑</span>
+                      <span>Premium requis</span>
+                    </p>
+                  </div>
+                </div>
+                
                 <div className="w-12 h-12 mx-auto bg-gradient-to-br from-blue-100 to-orange-100 rounded-full flex items-center justify-center text-2xl mb-2">
                   {friend.avatar}
                 </div>
@@ -433,6 +498,102 @@ const Social = () => {
           <p className="text-sm text-purple-100">- Franklin D. Roosevelt</p>
         </div>
       </div>
+
+      {/* Modal Premium */}
+      {showPremiumModal && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={handleClosePremiumModal}
+        >
+          <div 
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header avec dégradé */}
+            <div className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 p-6 text-white text-center">
+              <div className="text-6xl mb-3">👑</div>
+              <h2 className="text-2xl font-bold mb-2">Passez à Premium</h2>
+              <p className="text-sm text-yellow-100">
+                Débloquez toutes les fonctionnalités sociales
+              </p>
+            </div>
+
+            {/* Contenu */}
+            <div className="p-6">
+              <h3 className="text-lg font-bold text-gray-800 mb-4">
+                Avec Premium, vous pouvez :
+              </h3>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-green-600 font-bold">✓</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800">Contacter vos amis</p>
+                    <p className="text-sm text-gray-600">Envoyez des messages privés et encouragements</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-green-600 font-bold">✓</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800">Lancer des défis</p>
+                    <p className="text-sm text-gray-600">Créez des défis personnalisés entre amis</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-green-600 font-bold">✓</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800">Groupes privés</p>
+                    <p className="text-sm text-gray-600">Rejoignez ou créez des groupes de motivation</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-green-600 font-bold">✓</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800">Statistiques avancées</p>
+                    <p className="text-sm text-gray-600">Comparez vos progrès avec vos amis</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Prix */}
+              <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-lg p-4 mb-6 text-center">
+                <p className="text-sm text-gray-600 mb-1">À partir de</p>
+                <p className="text-3xl font-bold text-orange-600 mb-1">
+                  9,99€<span className="text-lg text-gray-600">/mois</span>
+                </p>
+                <p className="text-xs text-gray-600">Sans engagement</p>
+              </div>
+
+              {/* Boutons */}
+              <div className="space-y-3">
+                <button 
+                  className="w-full bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all transform hover:scale-105"
+                  onClick={handleClosePremiumModal}
+                >
+                  Découvrir Premium 👑
+                </button>
+                <button 
+                  className="w-full bg-gray-200 text-gray-700 font-medium py-3 rounded-lg hover:bg-gray-300 transition"
+                  onClick={handleClosePremiumModal}
+                >
+                  Plus tard
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
