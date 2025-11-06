@@ -52,7 +52,7 @@ const PremiumPopup = ({ onClose }: PremiumPopupProps) => {
           </div>
 
           <div className="premium-price">
-            <span className="premium-price-amount">5,99€</span>
+            <span className="premium-price-amount">4,99€</span>
             <span className="premium-price-period">/mois</span>
           </div>
 
