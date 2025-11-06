@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
+import AdPopup from './AdPopup';
 
 interface ExerciceDetailProps {
   exercice: {
@@ -23,6 +24,7 @@ interface ExerciceDetailProps {
 
 const ExerciceDetail = ({ exercice, onBack, onComplete, onSwitchVariant }: ExerciceDetailProps) => {
   const [isCompleted, setIsCompleted] = useState(exercice.completed);
+  const [showAdPopup, setShowAdPopup] = useState(true);
   const formTopRef = useRef<HTMLDivElement>(null);
 
     // Déterminer si c'est la version débutant ou confirmé
@@ -39,7 +41,11 @@ const ExerciceDetail = ({ exercice, onBack, onComplete, onSwitchVariant }: Exerc
     }, []); // Tableau vide = exécution uniquement au montage du composant
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 pb-24">
+    <>
+      {/* Popup de publicité */}
+      {showAdPopup && <AdPopup onClose={() => setShowAdPopup(false)} />}
+
+      <div className="relative min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 pb-24">
       {/* Header avec bouton retour */}
       <div className="bg-white shadow-sm sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center gap-4">
@@ -211,6 +217,7 @@ const ExerciceDetail = ({ exercice, onBack, onComplete, onSwitchVariant }: Exerc
         </div>
       </div>
     </div>
+    </>
   );
 };
 
